@@ -1,0 +1,54 @@
+# http://EditorConfig.org
+
+root = true
+
+# All Files
+[*]
+indent_style = space
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = false
+end_of_line = crlf
+max_line_length = null
+
+# Code files
+[*.{cs,csx,vb,vbx}]
+indent_size = 4
+
+# Xml project files
+[*.{csproj,vbproj,vcxproj,vcxproj.filters,proj,projitems,shproj}]
+indent_size = 2
+
+# Xml config files
+[*.{props,targets,ruleset,config,nuspec,resx,vsixmanifest,vsct}]
+indent_size = 2
+
+# JSON files
+[*.json]
+indent_size = 2
+
+# Visual Studio Solution Files
+[*.sln]
+indent_style = tab
+
+# Markdown Files
+[*.md]
+trim_trailing_whitespace = false
+
+# Web Files
+[*.{cshtml,htm,html,js,ts,tsx,css,sass,scss,less,svg,vue}]
+indent_size = 2
+insert_final_newline = true
+
+# Dotnet code style settings:
+[*.cs]
+# Sort using and Import directives with System.* appearing first
+dotnet_sort_system_directives_first = true
+
+# Newline settings
+csharp_new_line_before_open_brace = all
+csharp_new_line_before_else = true
+csharp_new_line_before_catch = true
+csharp_new_line_before_finally = true
+csharp_new_line_before_members_in_object_initializers = true
+csharp_new_line_before_members_in_anonymous_types = true
