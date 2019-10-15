@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 
+// Component's dependencies
+import SearchForm from '../SearchForm';
+
+// Component's styles
 import { Title, Wrapper } from './styles';
+
+// Global styles
 import { Container, Row, Col } from '../../styles/grid';
 
 class SiteHeader extends Component {
@@ -13,7 +19,7 @@ class SiteHeader extends Component {
               <Title>Buscar</Title>
             </Col>
             <Col lg='6'>
-              Form
+              <SearchForm />
             </Col>
           </Row>
         </Container>
