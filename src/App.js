@@ -6,9 +6,7 @@ import AppRouter from './router';
 class App extends Component {
   render() {
     return (
-      <section className="ms-content">
-        <AppRouter />
-      </section>
+      <AppRouter />
     );
   }
 }

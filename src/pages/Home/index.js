@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Container, } from 'reactstrap';
 
 // Components
 import SiteHeader from '../../components/SiteHeader'
@@ -7,13 +6,11 @@ import SiteHeader from '../../components/SiteHeader'
 class Home extends Component {
   render() {
     return (
-      <div>
+      <React.Fragment>
         <SiteHeader></SiteHeader>
-        <Container>
-          Hello world
-        </Container>
+        Hello world
 
-      </div>
+      </React.Fragment>
     );
   }
 }

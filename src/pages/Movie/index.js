@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Container, } from 'reactstrap';
 
 // Components
 import SiteHeader from '../../components/SiteHeader'
@@ -9,10 +8,7 @@ class Movie extends Component {
     return (
       <div>
         <SiteHeader></SiteHeader>
-        <Container>
-          Movie page
-        </Container>
-
+        Movie page
       </div>
     );
   }
