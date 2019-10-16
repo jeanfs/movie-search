@@ -16,7 +16,7 @@ class SiteHeader extends Component {
         <Container>
           <Row>
             <Col lg='6'>
-              <Title>Buscar</Title>
+              <Title>buscar filme</Title>
             </Col>
             <Col lg='6'>
               <SearchForm />

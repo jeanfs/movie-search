@@ -8,14 +8,24 @@ import headerBg from './images/bg.jpg'
  */
 export const Wrapper = styled.header`
   display: flex;
-  height: 768px;
-  background: url(${headerBg}) no-repeat center;
+  height: 400px;
+  align-items: center;
+  background: url(${headerBg}) no-repeat top;
   background-size: cover;
+  color: #fff;
 `;
 
 /**
  * Title
  */
 export const Title = styled.h1`
-  color: #f00
+  font-size: 60px;
+  font-weight: 400;
+  color: inherit;
+  margin: 0;
+
+  &:after {
+    content: "_";
+    color: #f700ee;
+  }
 `;

@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
 //import Api from '../../api';
 
+import Input from './styles'
+
 class SearchForm extends Component {
   render() {
     return(
-      <div>Formulário</div>
+      <div>
+        <Input />
+      </div>
     );
   }
 }
