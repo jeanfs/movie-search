@@ -1,11 +1,10 @@
 import axios from 'axios';
 
-const BASE_URL = "http://www.omdbapi.com";
-const API_KEY = "&apikey=afcc9cdf";
+import { API_URL, API_KEY } from '../constants'
 
 class Api {
   static get(uri) {
-    return axios.get(`${BASE_URL}${uri}${API_KEY}`);
+    return axios.get(`${API_URL}${uri}${API_KEY}`);
   }
 }
 

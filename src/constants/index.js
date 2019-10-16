@@ -1,4 +1,4 @@
-export const BASE_URL         = "http://www.omdbapi.com";
+export const API_URL          = "http://www.omdbapi.com";
 export const API_KEY          = "&apikey=afcc9cdf";
 
 export const START_FETCHING   = 'START_FETCHING';
