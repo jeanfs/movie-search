@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 // Redux
 import { Provider } from 'react-redux';
 import { createStore, compose } from 'redux';
-import rootReducers from './redux/reducers';
+import rootReducers from './reducers';
 
 // Router
 import { BrowserRouter } from 'react-router-dom';
