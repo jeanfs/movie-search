@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom';
 
 // Redux
 import { Provider } from 'react-redux';
-import { createStore, compose } from 'redux';
-import rootReducers from './reducers';
+import { createStore, compose, applyMiddleware } from 'redux';
+import rootReducer from './reducers';
+import thunk from 'redux-thunk';
 
 // Router
 import { BrowserRouter } from 'react-router-dom';
@@ -12,8 +13,14 @@ import { GlobalStyles } from './styles'
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-let store = createStore(rootReducers, {}, composeEnhancers());
+// Compose enhacer
+const devCompose = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+// Store
+const store = createStore(
+  rootReducer,
+  devCompose(applyMiddleware(thunk))
+)
 
 ReactDOM.render(
   <Provider store={store}>
