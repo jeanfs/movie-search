@@ -11,11 +11,11 @@ import setUrlParams from '../utils/set-url-params'
 export async function searchAPI(params) {
   const defaultParams = {
     s: '',
-    page: 1
+    page: 1,
   }
 
-  const apiParams = Object.assign({}, defaultParams, params)
-  const url = setUrlParams(API_URL, apiParams, API_KEY)
+  const apiParams = Object.assign({}, defaultParams, params, { 'apikey': API_KEY })
+  const url = setUrlParams(API_URL, apiParams)
 
   try {
     const request = await fetch(url)

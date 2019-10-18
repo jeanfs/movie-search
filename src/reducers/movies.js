@@ -8,9 +8,7 @@ import {
 const INITIAL_STATE = {
   isLoading: false,
   results: [],
-  history: [],
   query: '',
-  currentPage: 1,
   total: null
 }
 

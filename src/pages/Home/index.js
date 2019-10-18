@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 
 // Components
 import SiteHeader from '../../components/SiteHeader'
+import MoviesList from '../../components/MoviesList'
 
 class Home extends Component {
   render() {
     return (
       <React.Fragment>
-        <SiteHeader></SiteHeader>
-        Hello world
-
+        <SiteHeader />
+        <MoviesList />
       </React.Fragment>
     );
   }

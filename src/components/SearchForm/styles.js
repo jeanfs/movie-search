@@ -2,9 +2,9 @@ import styled from 'styled-components'
 
 
 /**
- * FormRow
+ * Form
  */
-export const FormRow = styled.div`
+export const Form = styled.form`
   display: flex;
 `;
 
@@ -42,7 +42,7 @@ export const Input = styled.input`
 /**
  * Button
  */
-export const Button = styled.button`
+export const Button = styled.button.attrs({ type: 'submit' })`
   margin-left: 10px;
   display: flex;
   cursor: pointer;
