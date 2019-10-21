@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 // Component's dependencies
 import SearchForm from '../SearchForm';
@@ -12,11 +13,11 @@ import { Container, Row, Col } from '../../styles/grid';
 class SiteHeader extends Component {
   render() {
     return (
-      <Wrapper>
+      <Wrapper small={this.props.small}>
         <Container>
           <Row>
             <Col lg='6'>
-              <Title>buscar filme</Title>
+              <Title small={this.props.small}><Link to="/">buscar filme</Link></Title>
             </Col>
             <Col lg='6'>
               <SearchForm />

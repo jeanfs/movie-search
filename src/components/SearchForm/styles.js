@@ -4,6 +4,7 @@ import styled from 'styled-components'
 /**
  * Form
  */
+
 export const Form = styled.form`
   display: flex;
 `;
@@ -12,7 +13,18 @@ export const Form = styled.form`
 /**
  * Input
  */
-export const Input = styled.input`
+
+export const FormRow = styled.div`
+  width: 100%;
+  position: relative;
+`;
+
+
+/**
+ * Input
+ */
+
+export const FormInput = styled.input`
   display: block;
   width: 100%;
   height: 64px;
@@ -39,10 +51,27 @@ export const Input = styled.input`
 `;
 
 
+
+/**
+ * Error feedback
+ */
+
+export const FormInputError = styled.span`
+  font-size: 14px;
+  color: #c90000;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin: 20px 0 0 20px;
+`;
+
+
 /**
  * Button
  */
+
 export const Button = styled.button.attrs({ type: 'submit' })`
+  height: 64px;
   margin-left: 10px;
   display: flex;
   cursor: pointer;

@@ -1,31 +1,127 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { Form, Input, Button } from './styles'
-import { getMovies } from '../../actions/movies'
+import { withRouter } from 'react-router-dom'
 
-const SearchForm = ({ dispatch }) => {
-  let searchInput;
+// Actions
+import { getMovies, clearResults } from '../../actions/movieSearch'
 
-  return(
-    <Form onSubmit={e => {
-      e.preventDefault()
+// Component's styles
+import {
+  Form,
+  FormRow,
+  FormInput,
+  FormInputError,
+  Button
+} from './styles'
 
-      if(!searchInput.value.trim()) {
-        return
-      }
-      dispatch(getMovies(searchInput.value))
-    }}>
-      <Input ref={node => searchInput = node} placeholder="Digite o título do filme..." />
+// Icons
+import { Search } from 'react-feather';
 
-      <Button title="Clique para buscar">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-search">
-          <circle cx="11" cy="11" r="8"></circle>
-          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-        </svg>
-      </Button>
-    </Form>
-  );
+class SearchForm extends Component {
+  state = {
+    query: '',
+    isLoading: false,
+    total: undefined,
+    noResults: false
+  }
+
+
+  /**
+   * _handleKeyPress
+   * Dispatches the getMovies action when 'Enter' key is pressed.
+   *
+   * @param {object} e - the event argument when the input is changed
+   */
+
+  _handleKeyPress = (e) => {
+    const inputValue = e.target.value.trim()
+
+    this.setState({
+      ...this.state,
+      query: inputValue
+    })
+
+    if (inputValue === '') {
+      this.setState({noResults: false})
+    }
+
+    if (e.key === 'Enter') {
+      this._fetchMovies()
+    }
+  }
+
+
+  /**
+   * _handleClick
+   * Prevents the default behavior of the button and invokes the _fetchMovie method
+   *
+   * @param {object} e - the event
+   */
+
+  _handleClick = (e) => {
+    e.preventDefault();
+
+    this._fetchMovies()
+  }
+
+
+  /**
+   * _fetchMovies
+   * Dispatches the action itself.
+   */
+
+  _fetchMovies = () => {
+    const queryString = this.state.query;
+    const props = this.props;
+
+    // Interrupts the execution if the query string is empty
+    if (queryString === '') {
+      return
+    }
+
+    props.dispatch(clearResults())
+    props.dispatch(getMovies(queryString))
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    if(nextProps.isLoading !== this.props.isLoading ){
+      this.setState({isLoading: nextProps.isLoading})
+    }
+
+    if((nextProps.total !== this.props.total) && nextProps.total > 0 ){
+      this.setState({total: nextProps.total})
+      this.props.history.push("/");
+    }
+
+    if((nextProps.total !== this.props.total) && nextProps.total === 0 ){
+      this.setState({noResults: true})
+    }
+  }
+
+  render() {
+    return(
+      <React.Fragment>
+        <Form>
+          <FormRow noResults={this.state.noResults}>
+            <FormInput type="text" name="searchInput" placeholder="Digite o título do filme..." onChange={this._handleKeyPress}  />
+            {this.state.noResults &&
+              <FormInputError>Nenhum resultado encontrado. Tente outro filme. ;)</FormInputError>
+            }
+          </FormRow>
+
+          <Button title="Clique para buscar" onClick={this._handleClick} disabled={this.state.isLoading}>
+            <Search />
+          </Button>
+        </Form>
+      </React.Fragment>
+    );
+  }
 }
 
+const mapStateToProps = store => ({
+  query: store.movieSearch.query,
+  isLoading: store.movieSearch.isLoading,
+  total: store.movieSearch.total
+});
 
-export default connect()(SearchForm);
+export default withRouter(connect(mapStateToProps)(SearchForm));

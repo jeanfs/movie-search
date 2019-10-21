@@ -9,10 +9,10 @@ const INITIAL_STATE = {
   isLoading: false,
   results: [],
   query: '',
-  total: null
+  total: 0
 }
 
-const moviesReducer = (state = INITIAL_STATE, action) => {
+const movieSearchReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
 
 
@@ -73,4 +73,4 @@ const moviesReducer = (state = INITIAL_STATE, action) => {
   }
 }
 
-export default moviesReducer
+export default movieSearchReducer

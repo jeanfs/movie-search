@@ -12,5 +12,8 @@ export const GlobalStyles = createGlobalStyle`
 
   body {
     font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: #333;
   }
 `

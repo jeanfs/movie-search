@@ -1,5 +1,5 @@
-import { API_URL, API_KEY } from '../constants'
-import setUrlParams from '../utils/set-url-params'
+import { API_URL, API_KEY } from '../constants';
+import setUrlParams from '../utils/set-url-params';
 
 
 /**
@@ -10,7 +10,6 @@ import setUrlParams from '../utils/set-url-params'
 
 export async function searchAPI(params) {
   const defaultParams = {
-    s: '',
     page: 1,
   }
 

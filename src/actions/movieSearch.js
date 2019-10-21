@@ -6,6 +6,7 @@ import {
 } from '../constants';
 import { searchAPI } from '../api';
 
+
 /**
  * getMovies
  * Makes an API call using the search term as a movie name, and also the current page
@@ -18,12 +19,12 @@ export const getMovies = (query) => dispatch => {
   // Set the loading state
   dispatch({
     type: LOADING_SEARCH,
-    isLoading: true
+    isLoading: true,
   })
 
   dispatch({
     type: SET_SEARCH_QUERY,
-    query: query
+    query: query,
   })
 
   if (query === '' && query.length <= 2) {
@@ -32,12 +33,21 @@ export const getMovies = (query) => dispatch => {
 
   return searchAPI({ s: query, 'type': 'movie' })
     .then(data => {
-      dispatch({
-        type: SET_SEARCH,
-        results: data.Search,
-        total: data.totalResults,
-        query: query
-      })
+      if(data.Response === 'True') {
+        dispatch({
+          type: SET_SEARCH,
+          results: data.Search,
+          total: data.totalResults,
+          query: query,
+        })
+      } else {
+        dispatch({
+          type: SET_SEARCH,
+          results: [],
+          total: 0,
+          query: query,
+        })
+      }
     })
     .catch(err => {
       throw err
@@ -45,7 +55,7 @@ export const getMovies = (query) => dispatch => {
     .finally(() => {
       dispatch({
         type: LOADING_SEARCH,
-        isLoading: false
+        isLoading: false,
       })
     })
 
@@ -53,11 +63,11 @@ export const getMovies = (query) => dispatch => {
 
 export const clearResults = () => dispatch => {
   dispatch({
-    type: CLEAR_SEARCH
+    type: CLEAR_SEARCH,
   })
 
   dispatch({
     type: SET_SEARCH_QUERY,
-    query: ''
+    query: '',
   })
 }
